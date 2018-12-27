@@ -1,22 +1,41 @@
-#!/bin/bash
-pth=`readlink -f $0`
-gitdir=`dirname $pth`
+#!/bin/bash -e
+
+run () {
+  echo $@
+  $@
+}
+
+
+pth=`cd $(dirname $0);pwd`
+gitdir=$(dirname $pth)
+[ -d ${gitdir}/.git ] || ( echo "has no .git , check repository" ; exit )
 debugdir=${HOME}/test/Mac_Config_test
 
-rm -Rf $debugdir
-mkdir -p $debugdir
+run rm -Rf $debugdir
+run mkdir -p $debugdir
 
-ln -s $gitdir/scripts/mc $debugdir/mc
-ln -s $gitdir/scripts/testsh $debugdir/testsh2
+run ln -s $gitdir/scripts/mc $debugdir/mc
+run ln -s $gitdir/scripts/testsh $debugdir/testsh2
 
+echo gen $debugdir/debugrc
 cat << EOF > $debugdir/debugrc
 export DEB_CONFIG_DEBUG_URL=$gitdir/.git
 export DEB_CONFIG_DEBUG_REV=origin/master
 EOF
 
+echo gen $debugdir/nodebugrc
 cat << EOF > $debugdir/nodebugrc
 unset DEB_CONFIG_DEBUG_URL
 unset DEB_CONFIG_DEBUG_REV
 EOF
 
 echo "you can debug in dir:" $debugdir
+
+cat <<EOF
+# help message:
+# debug时只从本地仓库拉取
+cd $debugdir
+. ./debugrc
+./mc scripts/testsh
+./mc testsh2
+EOF

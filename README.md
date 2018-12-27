@@ -14,3 +14,5 @@ Mac Config script
 1. 修改主机名
 
     [modify hostname on mac](modify_hostname_on_mac/README.md)
+
+1. 修改环境变量
