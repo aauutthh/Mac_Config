@@ -73,13 +73,15 @@ fi
 cat <<-EOF  > $util
 gitcat () {
   if [ \$# -gt 0 ] ; then
+    echo git --git-dir=${PROGIT} show ${REV}:\$1 >&2
     git --git-dir=${PROGIT} show ${REV}:\$1
   fi
 }
 
 # 取commitid
 gitsid() {
-  git --git-dir=${PROGIT} log -1 --format="%h" -- \$1
+  echo git --git-dir=${PROGIT} log -1 ${REV} --format="%h" -- \$1 >&2
+  git --git-dir=${PROGIT} log -1 ${REV} --format="%h" -- \$1
 }
 EOF
 

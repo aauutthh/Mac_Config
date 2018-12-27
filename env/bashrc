@@ -5,4 +5,4 @@ if [ -x ~/.bashrc_private ]; then
 	source ~/.bashrc_private
 fi
 
-
+PS1='\n\[\e[32;1m\]\u@\H \[\e[33;1m\]\w\[\e[0m\]\n\$ '

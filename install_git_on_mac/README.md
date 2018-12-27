@@ -7,6 +7,8 @@ mac下安装git
 
     双击并安装
 
+    或者`brew install git`
+
 1. 测试
 
     `git --version`

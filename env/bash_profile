@@ -1,0 +1,4 @@
+## 该文件只在初始化时复制， 不进行版本跟踪。需要版本跟踪的内容写到bashrc
+if [ -x ~/.bashrc ]; then
+  . ~/.bashrc 
+fi

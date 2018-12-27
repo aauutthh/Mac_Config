@@ -1,0 +1,20 @@
+source $VIMRUNTIME/vimrc_example.vim
+set fileencodings=utf-8,ucs-bom,cp936,GBK
+set encoding=utf-8
+set tabstop=2
+set expandtab
+set nu
+
+let g:IncludeAllFile = $HOME."/.vim/vimrc.d/include_all.xvim"
+if filereadable(g:IncludeAllFile) 
+  exec "source ". g:IncludeAllFile
+endif
+
+" config backup
+silent !mkdir -p /tmp/vim`id -u` > /dev/null 2>&1
+let g:tmpdir="/tmp/vim".ChompedSystem("id -u")
+let &g:undodir=g:tmpdir
+let &g:backupdir=g:tmpdir
+let &g:directory=g:tmpdir
+
+

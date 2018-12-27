@@ -1,0 +1,31 @@
+" 防止本.vimrc被递归, 类似 C头文件的ifndef
+if exists("g:IncludeAllFileFlag") && g:IncludeAllFileFlag 
+  finish
+endif
+let g:IncludeAllFileFlag = 1
+
+" 防止本.vimrc被递归, 类似 C头文件的ifndef
+" USAGE: 
+" if ScriptRunFlagCheckAndSet("g:RcGoRunFlag")
+"   finish
+" endif
+function ScriptRunFlagCheckAndSet(st) 
+  if ! exists(a:st)
+    exec "let ".a:st . " = 1"
+    return 0
+  endif
+  
+  let l:def = eval(a:st)
+  if l:def == 0 
+    exec "let ".a:st . " = 1"
+    return 0
+  endif
+
+  return l:def
+endfunction
+
+for vimfile in split(glob($HOME."/.vim/vimrc.d/*.vim"),"\n")
+  exec "source " . vimfile
+endfor
+
+
