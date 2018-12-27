@@ -1,0 +1,8 @@
+# .bashrc
+
+if [ -x ~/.bashrc_private ]; then
+  # 一些敏感的环境变量存放在~/.bashrc_private脚本里
+	source ~/.bashrc_private
+fi
+
+

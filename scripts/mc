@@ -52,7 +52,9 @@ done
 #declare ARGV=($@)
 echo "parse args to script<$script>:" $@
 
-PROURL=https://github.com/aauutthh/${PROGIT}
+if [ -z "$PROURL" ] ; then
+    PROURL=https://github.com/aauutthh/${PROGIT}
+fi
 
 if [ -z $DEB_CONFIG_DEBUG_URL ] ; then
   clone_bare_git $PROURL
