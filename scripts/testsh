@@ -1,0 +1,4 @@
+set |grep -E 'PRO|DEB_CONFIG|DEBUG'
+echo $D_RUN_ALREADY
+echo argc: $#
+echo argv: $@

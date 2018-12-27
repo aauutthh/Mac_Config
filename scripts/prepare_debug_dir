@@ -1,0 +1,22 @@
+#!/bin/bash
+pth=`readlink -f $0`
+gitdir=`dirname $pth`
+debugdir=${HOME}/test/Mac_Config_test
+
+rm -Rf $debugdir
+mkdir -p $debugdir
+
+ln -s $gitdir/scripts/mc $debugdir/mc
+ln -s $gitdir/scripts/testsh $debugdir/testsh2
+
+cat << EOF > $debugdir/debugrc
+export DEB_CONFIG_DEBUG_URL=$gitdir/.git
+export DEB_CONFIG_DEBUG_REV=origin/master
+EOF
+
+cat << EOF > $debugdir/nodebugrc
+unset DEB_CONFIG_DEBUG_URL
+unset DEB_CONFIG_DEBUG_REV
+EOF
+
+echo "you can debug in dir:" $debugdir
