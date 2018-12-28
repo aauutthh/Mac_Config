@@ -9,9 +9,7 @@ Mac Config script
 
 1. 安装brew
 
-    `/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"`
-
-    see [HomeBrew](https://brew.sh/)
+    [install brew on mac](./install_brew_on_mac/README.md)
 
 1. 安装git
 
@@ -25,4 +23,3 @@ Mac Config script
     
     [modify_configrc_on_mac](./modify_configrc_on_mac/README.md)
 
-1. 

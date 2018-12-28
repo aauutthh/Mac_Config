@@ -6,3 +6,5 @@ if [ -x ~/.bashrc_private ]; then
 fi
 
 PS1='\n\[\e[32;1m\]\u@\H \[\e[33;1m\]\w\[\e[0m\]\n\$ '
+export LANG=en_US.utf8
+export LC_ALL=en_US.utf8
