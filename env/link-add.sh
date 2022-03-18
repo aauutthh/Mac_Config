@@ -45,3 +45,4 @@ cp $LOCAL_CONFIG_PATH/env/bash_profile ${HOME}/.bash_profile
 doln   $LOCAL_CONFIG_PATH/env/vimrc ${HOME}/.vimrc
 mkdir -p ${HOME}/.vim
 doln   $LOCAL_CONFIG_PATH/env/vimrc.d ${HOME}/.vim/vimrc.d
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim

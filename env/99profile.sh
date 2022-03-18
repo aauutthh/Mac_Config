@@ -1,4 +1,38 @@
+
+export BREWPREFIX=`brew --prefix`
+if [ -d $BREWPREFIX/etc/profile.d/ ]; then
+  for i in $BREWPREFIX/etc/profile.d/*.sh; do
+    if [ -r $i ]; then
+      . $i
+    fi
+  done
+  unset i
+fi
+
+if [ -d $BREWPREFIX/etc/bash_completion.d ]; then
+  for i in $BREWPREFIX/etc/bash_completion.d/* ; do
+    if [ -r $i ]; then
+      . $i
+    fi
+  done
+  unset i
+fi
+
 set -o vi
+
+if [ "-${OSTYPE:0:6}" = "-darwin" ] ; then
+    alias ls='ls -G'
+    alias sha256sum='shasum -a 256'
+    alias sha1sum='shasum -a 1'
+else
+    alias ls='ls --color=auto'
+fi
+
+export EDITOR=vim
+
+alias svn='svn --no-auth-cache'
+alias grep='grep --color=auto '
+alias egrep='egrep --color=auto '
 alias l='ls -lart'
 alias lt='ls -lart|tail'
 alias p='ps -ef|grep -Ev "grep |ps "|grep -i '
